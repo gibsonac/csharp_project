@@ -11,19 +11,10 @@ namespace csharp_project.Models
         [Key]
         [Required]
         [Column("id")]
-        public int Orderid {get;set;}
-        [Column("product_id")]
-        [Required]
-        public int Productid {get;set;}
-        [Column("user_id")]
-        [Required]
-        public int Userid {get;set;}
-        [Column("quantity")]
-        [Required]
-        public int Quantity {get;set;}
-        public User User {get;set;}
-        public Product Product {get;set;}
-       
+        public int Orderid { get; set; }
+        public int Userid { get; set; }
+        public List<Item> ItemsOrdered { get; set; }
+
         [Column("created_at")]
         public DateTime Created_At { get; set; } = DateTime.Now;
         [Column("updated_at")]

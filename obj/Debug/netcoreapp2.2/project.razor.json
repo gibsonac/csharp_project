@@ -2961,13 +2961,23 @@
   "RootNamespace": "csharp_project",
   "Documents": [
     {
-      "FilePath": "Views/Home/LoginPartial.cshtml",
-      "TargetPath": "Views/Home/LoginPartial.cshtml",
+      "FilePath": "Views/Account/Index.cshtml",
+      "TargetPath": "Views/Account/Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views/Home/Login.cshtml",
-      "TargetPath": "Views/Home/Login.cshtml",
+      "FilePath": "Views/Account/LoginPartial.cshtml",
+      "TargetPath": "Views/Account/LoginPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Home/Gallery.cshtml",
+      "TargetPath": "Views/Home/Gallery.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Account/Orders.cshtml",
+      "TargetPath": "Views/Account/Orders.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2976,18 +2986,23 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Account/RegisterPartial.cshtml",
+      "TargetPath": "Views/Account/RegisterPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Home/Index.cshtml",
       "TargetPath": "Views/Home/Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views/Shared/_ValidationScriptsPartial.cshtml",
-      "TargetPath": "Views/Shared/_ValidationScriptsPartial.cshtml",
+      "FilePath": "Views/Home/Image.cshtml",
+      "TargetPath": "Views/Home/Image.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views/Home/RegisterPartial.cshtml",
-      "TargetPath": "Views/Home/RegisterPartial.cshtml",
+      "FilePath": "Views/Shared/_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Views/Shared/_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2998,6 +3013,16 @@
     {
       "FilePath": "Views/_ViewImports.cshtml",
       "TargetPath": "Views/_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Home/AboutUs.cshtml",
+      "TargetPath": "Views/Home/AboutUs.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Home/Store.cshtml",
+      "TargetPath": "Views/Home/Store.cshtml",
       "FileKind": "mvc"
     },
     {

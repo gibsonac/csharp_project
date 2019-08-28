@@ -14,20 +14,29 @@ using Newtonsoft.Json;
 
 namespace csharp_project.Controllers
 {
-    [Route("account/")]
     public class AccountController : Controller
     {
+        public User loggedUser
+        {
+            get{
+                return dbContext.Users
+                .Include(u => u.Orders)
+                .ThenInclude(o => o.ItemsOrdered)
+                .ThenInclude(io => io.Product)
+                .FirstOrDefault(u => u.Userid == HttpContext.Session.GetInt32("Userid"));
+            }
+        }
         private MyContext dbContext;
-
-        // here we can "inject" our context service into the constructor
         public AccountController(MyContext context)
         {
             dbContext = context;
         }
         public IActionResult Index()
         {
+            ViewBag.User = loggedUser;
             return View();
         }
+        //////////REGISTERING A NEW USER /////////////
         [HttpPost("register")]
         public IActionResult Register(User user)
         {
@@ -37,6 +46,7 @@ namespace csharp_project.Controllers
                 if (emailExists)
                 {
                     ModelState.AddModelError("Email", "Email already in use!");
+                    ViewBag.User = loggedUser;
                     return View("Index");
                 }
                 PasswordHasher<User> Hasher = new PasswordHasher<User>();
@@ -45,11 +55,12 @@ namespace csharp_project.Controllers
                 dbContext.SaveChanges();
                 User newUser = dbContext.Users.FirstOrDefault(u => u.Email == user.Email);
                 HttpContext.Session.SetInt32("Userid", newUser.Userid);
-                return RedirectToAction("Dashboard");
+                return RedirectToAction("Index", "Home");
             }
+            ViewBag.User = loggedUser;
             return View("Index");
         }
-
+        //////////LOGGING IN AN EXISITING USER /////////////
         [HttpPost("submitlogin")]
         public IActionResult SubmitLogin(LoginUser userSubmission)
         {
@@ -59,6 +70,7 @@ namespace csharp_project.Controllers
                 if (userInDb == null)
                 {
                     ModelState.AddModelError("LogEmail", "Invalid Email/Password");
+                    ViewBag.User = loggedUser;
                     return View("Index");
                 }
                 var hasher = new PasswordHasher<LoginUser>();
@@ -66,19 +78,31 @@ namespace csharp_project.Controllers
                 if (result == 0)
                 {
                     ModelState.AddModelError("LogEmail", "Invalid Email/Password");
+                    ViewBag.User = loggedUser;
                     return View("Index");
                 }
                 User newUser = dbContext.Users.FirstOrDefault(u => u.Email == userSubmission.LogEmail);
                 HttpContext.Session.SetInt32("Userid", newUser.Userid);
-                return RedirectToAction("Dashboard");
+                return RedirectToAction("Index", "Home");
             }
+            ViewBag.User = loggedUser;
             return View("Index");
         }
+
+        //////////LOGGING USER OUT /////////////
         [HttpGet("logout")]
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
+        }
+
+        //////////LIST OF PAST ORDERS PAGE /////////////
+        [HttpGet("orders")]
+        public IActionResult Orders()
+        {
+            ViewBag.User = loggedUser;
+            return View();
         }
     }
 }

@@ -53,8 +53,8 @@ namespace csharp_project.Models
         [Display(Name = "state")]
         public string State { get; set; }
         [Required]
-        [MinLength(4, ErrorMessage = "Zipcode must be more than 4 characters!")]
-        [Column("zipcode", TypeName = "VARCHAR(255)")]
+        [Range(0,99999)]
+        [Column("zipcode", TypeName = "INT")]
         [Display(Name = "zipcode")]
         public int Zipcode { get; set; }
 

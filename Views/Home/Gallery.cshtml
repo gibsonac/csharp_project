@@ -1,0 +1,11 @@
+@model List<Gallery>
+@{
+    ViewData["Title"] = "Gallery";
+}
+@{
+    foreach(var pic in Model)
+    {
+        <a href="image/@pic.Galleryid"><img src="@pic.Image_URL" alt=""></a>
+        <p>@pic.Title</p>
+    }
+}

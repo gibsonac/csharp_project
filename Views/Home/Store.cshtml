@@ -1,0 +1,28 @@
+@model List<Product>
+@{
+    ViewData["Title"] = "Gallery";
+}
+@{
+    <h4>Canvas: </h4>
+    @foreach(var product in Model)
+    {
+        if(product.Style == "Canvas")
+        {
+            <p>@product.Size</p>
+            <p>@product.Description</p>
+            <p>@product.Price</p>
+            <hr>
+        }
+    }
+    <h4>Metalic: </h4>
+    @foreach(var product in Model)
+    {
+        if(product.Style == "Metalic")
+        {
+            <p>@product.Size</p>
+            <p>@product.Description</p>
+            <p>@product.Price</p>
+            <hr>
+        }
+    }
+}

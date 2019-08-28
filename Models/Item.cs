@@ -6,28 +6,29 @@ using System.Reflection.Metadata;
 
 namespace csharp_project.Models
 {
-    public class Product
+    public class Item
     {
         [Key]
+        [Required]
         [Column("id")]
+        public int Itemid {get;set;}
+        [Column("product_id")]
         [Required]
         public int Productid {get;set;}
-        [Column("price")]
+        [Column("order_id")]
         [Required]
-        public double Price {get;set;}
-        [Column("style")]
+        public int Orderid {get;set;}
+        public int Galleryid {get;set;}
+        [Column("quantity")]
         [Required]
-        public string Style {get;set;}
-        [Column("description")]
-        [Required]
-        public string Description {get;set;}
-        [Column("size")]
-        [Required]
-        public string Size {get;set;}
+        public int Quantity {get;set;} = 1;
+        public Order Order {get;set;}
+        public Product Product {get;set;}
+        public Gallery ChosenImage {get;set;}
+       
         [Column("created_at")]
         public DateTime Created_At { get; set; } = DateTime.Now;
         [Column("updated_at")]
         public DateTime Updated_At { get; set; } = DateTime.Now;
-        public List<Order> Orders_In {get;set;}
     }
 }
