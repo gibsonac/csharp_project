@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Gallery";
 }
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
+
 <script type="text/javascript">
     $(function () {
         $(window).load(function () {
@@ -19,7 +19,7 @@
 
 @{
     <div class="container text-center">
-    <h2 class="gallery_h2">Portraits</h2>
+    <h2 class="gallery_h2" style="font-size: 4em !important;">Portraits</h2>
   <div class="row">
     @foreach(var pic in Model)
     {
@@ -33,7 +33,7 @@
     }
     </div>
     <hr>
-    <h2 class="gallery_h2">Landscapes</h2>
+    <h2 class="gallery_h2" style="font-size: 4em !important;">Landscapes</h2>
     <div class="row">
     @foreach(var pic in Model)
     {
@@ -47,7 +47,7 @@
     }
     </div>
     <hr>
-    <h2 class="gallery_h2">Wildlife</h2>
+    <h2 class="gallery_h2" style="font-size: 4em !important;">Wildlife</h2>
     <div class="row">
     @foreach(var pic in Model)
     {
@@ -61,7 +61,7 @@
     }
     </div>
     <hr>
-    <h2 class="gallery_h2">Conceptual</h2>
+    <h2 class="gallery_h2" style="font-size: 4em !important;">Conceptual</h2>
     <div class="row">
     @foreach(var pic in Model)
     {

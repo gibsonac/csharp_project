@@ -218,7 +218,12 @@ namespace csharp_project.Controllers
                     total *= item.Quantity;
                     sum += total;
                 }
-                ViewBag.Total = sum;
+                double tax = sum * .0725;
+                tax = Math.Round(tax, 2);
+                sum *= 1.0725;
+                sum = Math.Round(sum, 2);
+                ViewBag.Taxes = tax.ToString("0.00");
+                ViewBag.Total = sum.ToString("0.00");
                 ViewBag.Cart = CartItems;
                 ViewBag.User = loggedUser;
                 return View();

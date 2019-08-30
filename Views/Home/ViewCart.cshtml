@@ -16,7 +16,7 @@
     foreach(var item in ViewBag.Cart.ItemsOrdered)
     {
     <tr class="cart_size">
-      <td><a href="/image/@item.ChosenImage.Galleryid"><img style="width: 300px;"src="@item.ChosenImage.Image_URL" alt="whuthappened" /></a></td>
+      <td><a href="/image/@item.ChosenImage.Galleryid"><img style="max-width: 300px; max-height: 300px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.8);"src="@item.ChosenImage.Image_URL" alt="whuthappened" /></a></td>
       <td>@item.ChosenImage.Title</td>
       <td>@item.Product.Price</td>
       <td>@item.Product.Style</td>
@@ -26,9 +26,41 @@
     }
 }
 </table>
+<p class="text-right"><strong>Taxes: </strong>$@ViewBag.Taxes</p>
 <p class="text-right"><strong>TOTAL: </strong>$@ViewBag.Total</p>
-<div class="text-right"><button type="button"class="btn btn-secondary">Checkout</button></div>
 </div>
+<div class="container">
+  <div class="row">
+  <div class="col col-md-10"></div>
+  <div class="col col-md-2">
+<div id="paypal-button-container" style="width: 10vw;"></div></div></div></div>
 
 
+<script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
 
+    <script>
+        // Render the PayPal button into #paypal-button-container
+        paypal.Buttons({
+
+            // Set up the transaction
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '@ViewBag.Total'
+                        }
+                    }]
+                });
+            },
+
+            // Finalize the transaction
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    // Show a success message to the buyer
+                    alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                });
+            }
+
+
+        }).render('#paypal-button-container');
+    </script>

@@ -1,7 +1,21 @@
-@{
-    ViewData["Title"] = "Image @ViewBag.ThisImage.Title";
-}
 @model ProductQuantity
+@{
+    string title = @ViewBag.ThisImage.Title;
+    ViewData["Title"] = title;
+}
+<script type="text/javascript">
+    $(function() {
+        $("#price_select").change(function() {
+            if ($("#canvas_select").is(":selected")) {
+                $("#canvas_prices").show();
+                $("#metalic_prices").hide();
+            } else {
+                $("#metalic_prices").show();
+                $("#canvas_prices").hide();
+            }
+        }).trigger('change');
+    });
+</script>
 <div class="container">
 <div class="row">
     <div class="col-8">
@@ -15,19 +29,30 @@
             <div class="form-group  col-6">
                 <label asp-for="Style">Style</label>
                 <span asp-validation-for="Style"></span>
-                <select asp-for="Style" class="form-control">
-                    <option>Canvas</option>
-                    <option>Metalic</option>
+                <select id="price_select" asp-for="Style" class="form-control">
+                    <option id="canvas_select">Canvas</option>
+                    <option id="metalic_select">Metalic</option>
                 </select>
             </div>
             <div class="form-group col-6">
                 <label asp-for="Size">Size</label>
                 <span asp-validation-for="Size"></span>
-                <select asp-for="Size" class="form-control">
-                    <option>5x7</option>
-                    <option>8x10</option>
-                    <option>24x36</option>
-                </select>
+                <!-- canvas prices -->
+                <div id="canvas_prices">
+                    <select asp-for="Size" class="form-control">
+                        <option value="5x7">5x7 - $19.99</option>
+                        <option value="8x10">8x10 - $29.99</option>
+                        <option value="24x36">24x36 - $59.99</option>
+                    </select>
+                </div>
+                <!-- metalic prices -->
+                <div id="metalic_prices">
+                    <select asp-for="Size" class="form-control">
+                        <option value="5x7">5x7 - $39.99</option>
+                        <option value="8x10">8x10 - $59.99</option>
+                        <option value="24x36">24x36 - $99.99</option>
+                    </select>
+                </div>
             </div>
             <div class="form-group col-4">
                 <label asp-for="Quantity">Quantity</label>
