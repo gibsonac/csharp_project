@@ -2,27 +2,31 @@
 @{
     ViewData["Title"] = "Gallery";
 }
-@{
-    <h4>Canvas: </h4>
-    @foreach(var product in Model)
-    {
-        if(product.Style == "Canvas")
-        {
-            <p>@product.Size</p>
-            <p>@product.Description</p>
-            <p>@product.Price</p>
-            <hr>
-        }
-    }
-    <h4>Metalic: </h4>
-    @foreach(var product in Model)
-    {
-        if(product.Style == "Metalic")
-        {
-            <p>@product.Size</p>
-            <p>@product.Description</p>
-            <p>@product.Price</p>
-            <hr>
-        }
-    }
-}
+<div class="container text-center">
+    <div class="row">
+        <div class="col-6">
+            <h2>Canvas Prints: </h2>
+            @foreach(var product in Model)
+            {
+                @if(product.Style == "Canvas")
+                {
+                    <p><strong>Size:</strong> @product.Size</p>
+                    <p><strong>Price:</strong> $@product.Price</p>
+                    <hr>
+                }
+            }
+        </div>
+        <div class="col-6">
+            <h2>Metalic Prints: </h2>
+            @foreach(var product in Model)
+            {
+                @if(product.Style == "Metalic")
+                {
+                    <p><strong>Size:</strong> @product.Size</p>
+                    <p><strong>Price:</strong> $@product.Price</p>
+                    <hr>
+                }
+            }
+        </div>
+    </div>
+</div>

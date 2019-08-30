@@ -1,15 +1,36 @@
 @{
     ViewData["Title"] = "Orders";
 }
-orders page goes here!
-@{
-    foreach(var order in ViewBag.User)
-    {
-        <hr>
-        foreach(var item in order)
-        {
-            <p>@item.Product.Title</p>
-            <p>@item.Product.Description</p>
-        }
-    }
-}
+@model List<Order>
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <h1>order num</h1>
+            @foreach(var order in Model)
+            {
+                <table class="table table-hover table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">Title</th>
+                            <th scope="col">Size</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Quantity</th>
+                        </tr>
+                    </thead>
+                <!-- foreach(var i in Model) -->
+                    <tbody>
+                @foreach(var item in order.ItemsOrdered)
+                {
+                        <tr>
+                            <th scope="col">@item.ChosenImage.Title</th>
+                            <th scope="col">@item.Product.Size</th>
+                            <th scope="col">@item.Product.Style</th>
+                            <th scope="col">@item.Quantity</th>
+                        </tr>
+                }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+</div>

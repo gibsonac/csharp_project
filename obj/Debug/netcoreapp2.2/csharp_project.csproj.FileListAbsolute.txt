@@ -26,3 +26,15 @@
 /Users/Gibby540/Desktop/CodingDojo/C#.NET/csharp_project/obj/Debug/netcoreapp2.2/Razor/Views/_ViewStart.g.cshtml.cs
 /Users/Gibby540/Desktop/CodingDojo/C#.NET/csharp_project/obj/Debug/netcoreapp2.2/csharp_project.RazorTargetAssemblyInfo.cache
 /Users/Gibby540/Desktop/CodingDojo/C#.NET/csharp_project/obj/Debug/netcoreapp2.2/csharp_project.RazorTargetAssemblyInfo.cs
+/Users/Gibby540/Desktop/CodingDojo/C#.NET/csharp_project/bin/Debug/netcoreapp2.2/csharp_project.deps.json
+/Users/Gibby540/Desktop/CodingDojo/C#.NET/csharp_project/bin/Debug/netcoreapp2.2/csharp_project.runtimeconfig.json
+/Users/Gibby540/Desktop/CodingDojo/C#.NET/csharp_project/bin/Debug/netcoreapp2.2/csharp_project.runtimeconfig.dev.json
+/Users/Gibby540/Desktop/CodingDojo/C#.NET/csharp_project/bin/Debug/netcoreapp2.2/csharp_project.dll
+/Users/Gibby540/Desktop/CodingDojo/C#.NET/csharp_project/bin/Debug/netcoreapp2.2/csharp_project.pdb
+/Users/Gibby540/Desktop/CodingDojo/C#.NET/csharp_project/bin/Debug/netcoreapp2.2/csharp_project.Views.dll
+/Users/Gibby540/Desktop/CodingDojo/C#.NET/csharp_project/bin/Debug/netcoreapp2.2/csharp_project.Views.pdb
+/Users/Gibby540/Desktop/CodingDojo/C#.NET/csharp_project/obj/Debug/netcoreapp2.2/csharp_project.Views.pdb
+/Users/Gibby540/Desktop/CodingDojo/C#.NET/csharp_project/obj/Debug/netcoreapp2.2/csharp_project.csproj.CopyComplete
+/Users/Gibby540/Desktop/CodingDojo/C#.NET/csharp_project/obj/Debug/netcoreapp2.2/Razor/Views/Account/AccountInfo.g.cshtml.cs
+/Users/Gibby540/Desktop/CodingDojo/C#.NET/csharp_project/obj/Debug/netcoreapp2.2/Razor/Views/Home/ViewCart.g.cshtml.cs
+/Users/Gibby540/Desktop/CodingDojo/C#.NET/csharp_project/obj/Debug/netcoreapp2.2/Razor/Views/Home/test.g.cshtml.cs

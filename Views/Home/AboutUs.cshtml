@@ -1,4 +1,38 @@
 @{
     ViewData["Title"] = "About Us";
 }
-We are awesome, end of story. 
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+function showHideDiv(ele) {
+    var srcElement = document.getElementById(ele);
+    if (srcElement != null) {
+        if (srcElement.style.display == "block") {
+        srcElement.style.display = 'none';
+    }
+    else {
+        srcElement.style.display = 'block';
+    }
+    return false;
+    }
+}
+</script>
+<h1 class="text-center" style="font-weight:200;font-size: 8vh;">We are awesome, end of story.</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h2 class="text-center">Tony</h2>
+        </div>
+        <div class="col-6">
+            <h2 class="text-center">Adam</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <input type="button" value="DON'T PRESS THIS BUTTON!!!"class="btn btn-danger" onClick="showHideDiv('thanksss')">
+        </div>
+        <div id="thanksss" class="col-12 text-center"  style="display: none;">
+            <h1>Thanks Devon for all your help this month!!!</h1>
+            <img style="align-content: center;"src="https://www.photofunny.net/images/201908/30/final_1608199678178327181_origen.jpg.gif?act=54" alt="">
+        </div>
+    </div>
+</div>

@@ -2,10 +2,77 @@
 @{
     ViewData["Title"] = "Gallery";
 }
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $(window).load(function () {
+            $('#pageloaddiv').fadeOut(2000);
+        })
+    })
+</script>
+<style>
+    #grow { transition: all .2s ease-in-out; }
+    #grow:hover { transform: scale(1.1); }
+</style>
+
+<div id="pageloaddiv"></div>
+
 @{
-    foreach(var pic in Model)
+    <div class="container text-center">
+    <h2 class="gallery_h2">Portraits</h2>
+  <div class="row">
+    @foreach(var pic in Model)
     {
-        <a href="image/@pic.Galleryid"><img src="@pic.Image_URL" alt=""></a>
-        <p>@pic.Title</p>
+        @if(pic.Categoryid == 1)
+        {
+        <div class="col-md-4">
+        <a href="image/@pic.Galleryid"><img id="grow" src="@pic.Image_URL" alt=""class="mw-100"style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.8);max-height: 500px;"></a>
+            <h4>@pic.Title</h4>
+        </div>
+        }
     }
+    </div>
+    <hr>
+    <h2 class="gallery_h2">Landscapes</h2>
+    <div class="row">
+    @foreach(var pic in Model)
+    {
+        if(pic.Categoryid == 2)
+        {
+        <div class="col-md-4">
+        <a href="image/@pic.Galleryid"><img id="grow" src="@pic.Image_URL" alt=""class="mw-100"style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.8);max-height: 500px;" ></a>
+            <h4>@pic.Title</h4>
+        </div>
+        }
+    }
+    </div>
+    <hr>
+    <h2 class="gallery_h2">Wildlife</h2>
+    <div class="row">
+    @foreach(var pic in Model)
+    {
+        if(pic.Categoryid == 3)
+        {
+        <div class="col-md-4">
+        <a href="image/@pic.Galleryid"><img id="grow" src="@pic.Image_URL" alt=""class="mw-100"style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.8);max-height: 500px;" ></a>
+            <h4>@pic.Title</h4>
+        </div>
+        }
+    }
+    </div>
+    <hr>
+    <h2 class="gallery_h2">Conceptual</h2>
+    <div class="row">
+    @foreach(var pic in Model)
+    {
+        if(pic.Categoryid == 4)
+        {
+        <div class="col-md-4">
+        <a href="image/@pic.Galleryid"><img id="grow" src="@pic.Image_URL" alt=""class="mw-100" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.8);max-height: 500px;" ></a>
+            <h4>@pic.Title</h4>
+        </div>
+        }
+    }
+  </div>
+</div>
 }

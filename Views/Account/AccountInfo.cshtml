@@ -1,0 +1,75 @@
+@{
+    string name = ViewBag.User.First_Name;
+    ViewData["Title"] =  name + "'s " + "Account Info";
+}
+@model User
+<div class="container">
+    <h1>Update your profile</h1>
+    <small><span>sorry you have to input ALL fields to update your profile.</span></small> <br>
+    <form asp-action="Update" asp-route-id="@ViewBag.User.Userid" asp-controller="Account" method="post">
+        <div class="row">
+            <label asp-for="First_Name" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-7">
+            <span asp-validation-for="First_Name"></span>
+                <input type="text" asp-for="First_Name">
+            </div>
+        </div>
+        <div class="row">
+            <label asp-for="Last_Name"class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-7">
+                <span asp-validation-for="Last_Name"></span>
+                <input type="text" asp-for="Last_Name">
+            </div>
+        </div>
+        <div class="row">
+            <label asp-for="Email" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-7">
+                <span asp-validation-for="Email"></span>
+                <input type="email" asp-for="Email">
+            </div>
+        </div>
+        <div class="row">
+            <label asp-for="Password" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-7">
+                <span asp-validation-for="Password"></span>
+                <input type="password" asp-for="Password" placeholder="Password">
+            </div>
+        </div>
+        <div class="row">
+            <label asp-for="password_confirm" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-7">
+                <span asp-validation-for="password_confirm"></span>
+                <input type="password" asp-for="password_confirm" placeholder="Confirm Password">
+            </div>
+        </div>
+        <div class="row">
+            <label asp-for="Street" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-7">
+                <span asp-validation-for="Street"></span>
+                <input type="text" asp-for="Street" placeholder="Street Address">
+            </div>
+        </div>
+        <div class="row">
+            <label asp-for="City" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-7">
+                <span asp-validation-for="City"></span>
+                <input type="text" asp-for="City" placeholder="City">
+            </div>
+        </div>
+        <div class="row">
+            <label asp-for="State" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-7">
+                <span asp-validation-for="State"></span>
+                <input type="text" asp-for="State" placeholder="State">
+            </div>
+        </div>
+        <div class="row">
+            <label asp-for="Zipcode" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-7">
+                <span asp-validation-for="Zipcode"></span>
+                <input type="number" asp-for="Zipcode" placeholder="Zip-Code">
+            </div>
+        </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>

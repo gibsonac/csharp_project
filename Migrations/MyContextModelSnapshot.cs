@@ -48,6 +48,10 @@ namespace csharp_project.Migrations
                     b.Property<DateTime>("Created_At")
                         .HasColumnName("created_at");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnName("description");
+
                     b.Property<string>("Image_URL");
 
                     b.Property<string>("Title")
@@ -107,16 +111,14 @@ namespace csharp_project.Migrations
                     b.Property<DateTime>("Created_At")
                         .HasColumnName("created_at");
 
-                    b.Property<int?>("Productid");
+                    b.Property<bool>("PurchaseMade");
 
                     b.Property<DateTime>("Updated_At")
                         .HasColumnName("updated_at");
 
-                    b.Property<int?>("Userid");
+                    b.Property<int>("Userid");
 
                     b.HasKey("Orderid");
-
-                    b.HasIndex("Productid");
 
                     b.HasIndex("Userid");
 
@@ -232,20 +234,17 @@ namespace csharp_project.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("csharp_project.Models.Product", "Product")
-                        .WithMany()
+                        .WithMany("Orders_In")
                         .HasForeignKey("Productid")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("csharp_project.Models.Order", b =>
                 {
-                    b.HasOne("csharp_project.Models.Product")
-                        .WithMany("Orders_In")
-                        .HasForeignKey("Productid");
-
-                    b.HasOne("csharp_project.Models.User")
+                    b.HasOne("csharp_project.Models.User", "User")
                         .WithMany("Orders")
-                        .HasForeignKey("Userid");
+                        .HasForeignKey("Userid")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

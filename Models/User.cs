@@ -85,16 +85,16 @@ namespace csharp_project.Models
 
             if (!hasChar.IsMatch(input))
             {
-                return new ValidationResult("Password should atleast one letter, number, and character");
+                return new ValidationResult("Password should at least have one letter, one number, and one character");
             }
             if (!hasNumber.IsMatch(input))
             {
-                return new ValidationResult("Password should atleast one letter, number, and character");
+                return new ValidationResult("Password should at least have one letter, one number, and one character");
             }
 
             if (!hasSymbols.IsMatch(input))
             {
-                return new ValidationResult("Password should atleast one letter, number, and character");
+                return new ValidationResult("Password should at least have one letter, one number, and one character");
             }
             else
             {

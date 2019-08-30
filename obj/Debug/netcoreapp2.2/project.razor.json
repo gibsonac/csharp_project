@@ -2976,6 +2976,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Account/AccountInfo.cshtml",
+      "TargetPath": "Views/Account/AccountInfo.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Account/Orders.cshtml",
       "TargetPath": "Views/Account/Orders.cshtml",
       "FileKind": "mvc"
@@ -3001,6 +3006,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Home/test.cshtml",
+      "TargetPath": "Views/Home/test.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Shared/_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views/Shared/_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
@@ -3008,6 +3018,11 @@
     {
       "FilePath": "Views/Shared/Error.cshtml",
       "TargetPath": "Views/Shared/Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Home/ViewCart.cshtml",
+      "TargetPath": "Views/Home/ViewCart.cshtml",
       "FileKind": "mvc"
     },
     {

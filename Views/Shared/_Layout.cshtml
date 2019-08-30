@@ -2,8 +2,17 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <style>
+        *{
+              color: #cecaca;
+        }
+        #heart {
+            color:red !important;
+        }
+        #footer-text{color:white !important;}
+    </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - csharp_project</title>
+    <title>@ViewData["Title"] - AGT Photography</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -35,76 +44,37 @@
 </head>
 <body>
     <header>
-        <!-- <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Antonio Gibson Photography(Logo here)</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Gallery">Gallery</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Products">Products</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About Me</a>
-                        </li>
-                    </ul>
-                </div>
-            
-        </nav> -->
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light newcolor border-bottom box-shadow mb-3">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">AGT Photography</a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- HERE IS WHAT WE HAD PREVIOUSLY, ABOVE IS WHAT I'M TESTING -->
+                <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button> -->
+                <!-- <a class="navbar-brand" href="/">
+                AGT Photography</a> -->
+                <a class="navbar-brand" style="padding: 0px;" href="/"><img src="~/images/agt_logo.png" style="width: 50px;"alt="logo"></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="/gallery" style="color:black;">GALLERY <span class="sr-only">(current)</span></a></li>
-                <li><a href="/store" style="color:black;">STORE</a></li>
-                <li><a href="/aboutus" style="color:black;">ABOUT </a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"style="color:black;"> <span class="glyphicon glyphicon-shopping-cart"></span> 0.count - Items</a>
-                <ul class="dropdown-menu dropdown-cart" role="menu">
-                    <!-- loop through a viewbag showing the items in count. -->
-                    <li>
-                        <span class="item">
-                            <span class="item-left">
-                                <img src="http://lorempixel.com/50/50/" alt="" /> <!-- item img preview?? -->
-                                <span class="item-info">
-                                    <span>Item name</span> <!-- item name -->
-                                    <span>23$</span> <!-- price -->
-                                </span>
-                            </span>
-                            <span class="item-right">
-                                <button class="btn btn-xs btn-danger pull-right">x</button> <!-- delete item off cart -->
-                            </span>
-                        </span>
-                    </li>
-                    <!-- end loop here -->
-                    <li class="divider"></li>
-                    <li><a class="text-center" href="">View Cart</a></li>
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="/gallery" style="color:black;">GALLERY <span class="sr-only">(current)</span></a></li>
+                    <li><a href="/store" style="color:black;">STORE</a></li>
+                    <li><a href="/aboutus" style="color:black;">ABOUT </a></li>
                 </ul>
-                </li>
-            </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-                <ul class="nav nav-pills">
+                <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color: black;">Account</a>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -118,8 +88,8 @@
                                 }
                                 else
                                 {
-                                    <a class="dropdown-item" href="/orders">Orders </a> 
-                                    <a class="dropdown-item" href="/account">Account Info </a> 
+                                    <a class="dropdown-item" href="/account/orders">Orders </a> 
+                                    <a class="dropdown-item" href="/account/info">Account Info </a> 
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="/logout">Logout </a> 
                                 }
@@ -127,24 +97,87 @@
                         </div>
                     </li>
                 </ul>
+            @{
+                bool hasCart = false;
+                if(ViewBag.User != null)
+                {
+                    foreach(var order in ViewBag.User.Orders)
+                    {
+                        if(order.PurchaseMade == false)
+                        {
+                            hasCart = true;
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"style="color:black;"> <span class="glyphicon glyphicon-shopping-cart"></span> @order.ItemsOrdered.Count - Items</a>
+                                <ul class="dropdown-menu dropdown-cart" role="menu">
+                                    @foreach(var item in order.ItemsOrdered)
+                                    {
+                                        <li>
+                                            <span class="item">
+                                                <span class="item-left">
+                                                    <a href="/image/@item.ChosenImage.Galleryid"><img style="width: 60px;"src="@item.ChosenImage.Image_URL" alt="" /></a>
+                                                    <span class="item-info">
+                                                        <span style="color:black;"><strong style="color:black;">@item.ChosenImage.Title</strong></span> 
+                                                        <span style="color:black;"><strong style="color:black;">Price:</strong> @item.Product.Price</span>
+                                                        <span style="color:black;"><strong style="color:black;">Quantity:</strong> @item.Quantity</span> 
+                                                    </span>
+                                                </span>
+                                                <span class="item-right">
+                                                    <a href="/delete/@item.Itemid"><button class="btn btn-xs btn-danger pull-right">x</button></a>
+                                                </span>
+                                            </span>
+                                        
+                                        </li>
+                                        <li class="divider"></li>
+
+                                    };
+                                    <li><a class="text-center" href="/viewcart">ViewCart</a></li>
+                                </ul>
+                                </li>
+                            </ul>
+                        }
+                    }
+                }
+                @if(hasCart == false)
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"style="color:black;"> <span class="glyphicon glyphicon-shopping-cart"></span> 0 - Items</a>
+                        <ul class="dropdown-menu dropdown-cart" role="menu">
+                            <li>
+                                <span class="item text-center">
+                                    Your Cart is empty!
+                                </span>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a class="text-center" href="/account">Login & Shop</a></li>
+                        </ul>
+                        </li>
+                    </ul>
+                }
+            }
+                
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
         </nav>
     </header>
-    <div class="container">
+    <div class="">
         <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-3" style="padding-bottom: 6rem !important">
             @RenderBody()
         </main>
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2019 - Made with <span style="color:red;"><b>&hearts;</b></span> by Adam and Tony
+        <div style="margin-left:15px;">
+            &copy; 2019 - Made with <span id="footer-text"><b id="heart">&hearts;</b></span> by Adam and Tony
         </div>
     </footer>
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
     </environment>
     <environment exclude="Development">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"

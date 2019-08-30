@@ -1,14 +1,48 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<style>
+    h1{
+        font-size: 8vw;
+        color: white;
+        display: inline;
+        margin-top: 30%;
+        position: absolute;
+        text-align: center;
+        margin-left: 30%;
+        text-shadow: 7px 7px black;
+        z-index:2;
+    }
+    img:hover
+    {
+        -webkit-filter: brightness(70%);
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        -ms-transition: all 1s ease;
+        transition: all 1s ease;
+    }
+</style>
+
+<script>
+
+</script>
 
 <!-- div with an image as a background -->
-<div id="#gallery gallery">
-    <h1 class="text-center"><a href="/gallery">View Gallery</a></h1>
-</div>
+<a class="text-center" href="/gallery"><div id="gallery">
+    <h1>View Gallery</h1>
+    <img class="img-fluid"src="/images/gallery.jpg" alt="" >
+</div></a>
 
 <!-- div with an image as a background -->
-<a href="/store"><h1 class="text-center">Price & Detail</h1></a>
+
+<a class="text-center" href="/store"><div id="store">
+    <h1 id="price">Price & Detail</h1>
+    <img class="img-fluid" src="/images/price_details.jpg" alt=""></a>
+</div></a>
 
 <!-- div with an image as a background -->
-<a href="/aboutus"><h1 class="text-center">About us</h1></a>
+<a class="text-center" href="/aboutus"><div id="aboutus">
+    <h1 id="about">About us</h1>
+    <img class="img-fluid" src="/images/about_us.jpg" alt="">
+</div></a>

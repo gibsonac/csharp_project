@@ -28,6 +28,6 @@ namespace csharp_project.Models
         public DateTime Created_At { get; set; } = DateTime.Now;
         [Column("updated_at")]
         public DateTime Updated_At { get; set; } = DateTime.Now;
-        public List<Order> Orders_In {get;set;}
+        public List<Item> Orders_In {get;set;}
     }
 }

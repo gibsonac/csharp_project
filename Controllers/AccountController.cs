@@ -14,16 +14,26 @@ using Newtonsoft.Json;
 
 namespace csharp_project.Controllers
 {
+    [Route("account")]
     public class AccountController : Controller
     {
         public User loggedUser
         {
-            get{
+            get
+            {
                 return dbContext.Users
                 .Include(u => u.Orders)
-                .ThenInclude(o => o.ItemsOrdered)
-                .ThenInclude(io => io.Product)
+                    .ThenInclude(o => o.ItemsOrdered)
+                    .ThenInclude(i => i.Product)
+                .Include(u => u.Orders)
+                    .ThenInclude(o => o.ItemsOrdered)
+                    .ThenInclude(i => i.ChosenImage)
                 .FirstOrDefault(u => u.Userid == HttpContext.Session.GetInt32("Userid"));
+                // return dbContext.Users
+                // .Include(u => u.Orders)
+                // .ThenInclude(o => o.ItemsOrdered)
+                // .ThenInclude(io => io.Product)
+                // .FirstOrDefault(u => u.Userid == HttpContext.Session.GetInt32("Userid"));
             }
         }
         private MyContext dbContext;
@@ -55,7 +65,16 @@ namespace csharp_project.Controllers
                 dbContext.SaveChanges();
                 User newUser = dbContext.Users.FirstOrDefault(u => u.Email == user.Email);
                 HttpContext.Session.SetInt32("Userid", newUser.Userid);
-                return RedirectToAction("Index", "Home");
+                if (HttpContext.Session.GetInt32("Galleryid") == null)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    int? id = HttpContext.Session.GetInt32("Galleryid");
+                    return RedirectToAction("Image", "Home", new { id = id });
+                }
+
             }
             ViewBag.User = loggedUser;
             return View("Index");
@@ -83,14 +102,47 @@ namespace csharp_project.Controllers
                 }
                 User newUser = dbContext.Users.FirstOrDefault(u => u.Email == userSubmission.LogEmail);
                 HttpContext.Session.SetInt32("Userid", newUser.Userid);
-                return RedirectToAction("Index", "Home");
+                if (HttpContext.Session.GetInt32("Galleryid") == null)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    int id = (int)HttpContext.Session.GetInt32("Galleryid");
+                    return RedirectToAction("Image", "Home", new { id = id });
+                }
             }
             ViewBag.User = loggedUser;
             return View("Index");
         }
 
+
+        [HttpPost("Update/{id}")]
+        public IActionResult Update(User oldInfo, int id)
+        {
+            User toUpdate = dbContext.Users.FirstOrDefault(d => d.Userid == id);
+            if (toUpdate == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                toUpdate.First_Name = oldInfo.First_Name;
+                toUpdate.Last_Name = oldInfo.Last_Name;
+                toUpdate.Email = oldInfo.Email;
+                PasswordHasher<User> Hasher = new PasswordHasher<User>();
+                toUpdate.Password = Hasher.HashPassword(toUpdate, oldInfo.Password);
+                toUpdate.Street = oldInfo.Street;
+                toUpdate.State = oldInfo.State;
+                toUpdate.City = oldInfo.City;
+                toUpdate.Zipcode = oldInfo.Zipcode;
+                dbContext.SaveChanges();
+                return RedirectToAction("AccountInfo", "Account");
+            }
+        }
+
         //////////LOGGING USER OUT /////////////
-        [HttpGet("logout")]
+        [HttpGet("/logout")]
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
@@ -101,8 +153,23 @@ namespace csharp_project.Controllers
         [HttpGet("orders")]
         public IActionResult Orders()
         {
+            List<Order> OrderList = dbContext.Orders
+            .Include(o => o.ItemsOrdered)
+                .ThenInclude(i => i.Product)
+            .Include(o => o.ItemsOrdered)
+                .ThenInclude(i => i.ChosenImage)
+            .Where(o => o.Userid == HttpContext.Session.GetInt32("Userid") && o.PurchaseMade == true)
+            .ToList();
             ViewBag.User = loggedUser;
-            return View();
+            return View(OrderList);
+        }
+
+        //////////ACCOUNT INFO PAGE /////////////
+        [HttpGet("info")]
+        public IActionResult AccountInfo()
+        {
+            ViewBag.User = loggedUser;
+            return View(loggedUser);
         }
     }
 }
