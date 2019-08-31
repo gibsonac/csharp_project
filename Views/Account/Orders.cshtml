@@ -5,9 +5,10 @@
 <div class="container">
     <div class="row">
         <div class="col-8">
-            <h1>order num</h1>
-            @foreach(var order in Model)
+            @for(var x=0; x<Model.Count; x++)
             {
+                int num = x+1;
+            <h1>Order @num</h1>
                 <table class="table table-hover table-dark">
                     <thead>
                         <tr>
@@ -15,21 +16,31 @@
                             <th scope="col">Size</th>
                             <th scope="col">Type</th>
                             <th scope="col">Quantity</th>
+                            <th scope="col">Price</th>
                         </tr>
                     </thead>
                 <!-- foreach(var i in Model) -->
                     <tbody>
-                @foreach(var item in order.ItemsOrdered)
+                @{double sum = 0;}
+                @foreach(var item in Model[x].ItemsOrdered)
                 {
+                    double total = 0;
+                    total += item.Product.Price;
+                    total *= item.Quantity;
+                    sum += total;
                         <tr>
                             <th scope="col">@item.ChosenImage.Title</th>
                             <th scope="col">@item.Product.Size</th>
                             <th scope="col">@item.Product.Style</th>
                             <th scope="col">@item.Quantity</th>
+                            <th scope="col">@item.Product.Price</th>
                         </tr>
                 }
+                    @{ double tax = sum * .0725;}
                     </tbody>
                 </table>
+                <p>TAXES: $@tax.ToString("0.00")</p>
+                <p>TOTAL: $@sum.ToString("0.00")</p>
             }
         </div>
     </div>
