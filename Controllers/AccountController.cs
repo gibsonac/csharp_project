@@ -29,11 +29,7 @@ namespace csharp_project.Controllers
                     .ThenInclude(o => o.ItemsOrdered)
                     .ThenInclude(i => i.ChosenImage)
                 .FirstOrDefault(u => u.Userid == HttpContext.Session.GetInt32("Userid"));
-                // return dbContext.Users
-                // .Include(u => u.Orders)
-                // .ThenInclude(o => o.ItemsOrdered)
-                // .ThenInclude(io => io.Product)
-                // .FirstOrDefault(u => u.Userid == HttpContext.Session.GetInt32("Userid"));
+                
             }
         }
         private MyContext dbContext;
